@@ -16,3 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('layouts.master');
 });
+
+Route::get('/pendaftaran', function () {
+    return view('layouts.pendaftaran.form_daftar');
+});
