@@ -169,7 +169,7 @@
               <div class="numbertext">1 / 3</div>
               <img src="{{ asset('imgs/2.jpg') }}" style="width:100%; height:500px">
               <div class="top-right">
-                <a href="/pendaftaran/form">Pendaftaran</a>
+                <a href="{{ route('register') }}">Pendaftaran</a>
               </div>
               <div class="text">Caption Text</div>
             </div>

@@ -13,9 +13,33 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('nik')->unique();
+            $table->string('nisn')->unique();
+            $table->string('nm_siswa');
+            $table->string('tempat_lahir');
+            $table->string('provinsi');
+            $table->string('kabupaten');
+            $table->string('kecamatan');
+            $table->string('desa');
+            $table->date('tgl_lahir')->default('2000-01-01');
+            $table->string('umur');
+            $table->string('smp');
+            $table->string('foto');
+            $table->string('jk');
+            $table->string('bb');
+            $table->string('tb');
+            $table->string('sk');
+            $table->string('anak_ke');
+            $table->string('agama');
+            $table->string('status');
+            $table->string('tinggal_bersama');
+            $table->string('nmayah');
+            $table->string('kerja_ayah');
+            $table->string('pddkn_ayah');
+            $table->string('no_ayah');
+            $table->string('alamat_ayah');
+            // $table->string('email')->nullable()->change();
+            // $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
