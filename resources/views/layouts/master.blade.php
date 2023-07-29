@@ -175,7 +175,7 @@
             </div>
             
             <div class="mySlides fade">
-              <div class="numbertext">2 / 3</div>
+              <div class="numbertext">2 / 3</div> 
               <img src="{{ asset('imgs/3.jpg') }}" style="width:100%; height:500px">
               <div class="text">Caption Two</div>
             </div>
