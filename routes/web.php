@@ -24,6 +24,20 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::middleware(['auth','level:siswa'])->group(function(){
+    Route::get('/user', function () {
+        return view('dashboard');
+    })->middleware('auth');
+});
+
+Route::middleware(['auth', 'level:Administrator'])->group(function () {
+    Route::get('/admin', function () {
+        // Ganti 'index-admin' dengan nama view halaman index untuk admin
+        return view('dashboard');
+    });
+});
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

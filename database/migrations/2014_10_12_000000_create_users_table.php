@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('level')->default('siswa');
             $table->string('nik')->unique();
             $table->string('nisn')->unique();
             $table->string('nm_siswa');
