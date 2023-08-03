@@ -170,6 +170,7 @@
               <img src="{{ asset('imgs/2.jpg') }}" style="width:100%; height:500px">
               <div class="top-right">
                 <a href="{{ route('register') }}">Pendaftaran</a>
+                <a href="{{ route('login') }}">Login</a>
               </div>
               <div class="text">Caption Text</div>
             </div>
