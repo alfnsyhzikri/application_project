@@ -20,9 +20,6 @@ Route::get('/', function () {
     return view('layouts.master');
 });
 
-Route::get('/pendaftaran/form', [PendaftaranController::class, 'create']);
-Route::post('/pendaftaran', [PendaftaranController::class, 'store']);
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
