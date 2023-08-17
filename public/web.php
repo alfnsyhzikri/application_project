@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PendaftaranController;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,56 +16,27 @@ use App\Http\Controllers\PendaftaranController;
 |
 */
 
-
 Route::get('/', function () {
-    return view('layouts.master');
+    return view('welcome');
 });
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 
-
-
-
-// ROUTE SISWA
-Route::middleware(['auth','level:siswa'])->group(function(){
+Route::middleware(['auth','level:Siswa'])->group(function(){
     Route::get('/user', function () {
-        return view('users.siswa.index');
+        return view('users.index');
     })->middleware('auth');
-
-    Route::get('/pengumuman', function () {
-        return view('users.siswa.pengumuman');
-    })->middleware('auth');
-
 });
 
-
-
-
-
-
-
-// ROUTE ADMIN
 Route::middleware(['auth', 'level:Administrator'])->group(function () {
     Route::get('/admin', function () {
-        return view('users.admin.index');
+        // Ganti 'index-admin' dengan nama view halaman index untuk admin
+        return view('users.index');
     });
-
-    Route::get('/data_user', function () {
-        return view('users.admin.form');
-    });
-
 });
-
-
-
-
-
-
-
-
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
