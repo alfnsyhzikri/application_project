@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PendaftaranController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,10 +53,8 @@ Route::middleware(['auth', 'level:Administrator'])->group(function () {
         return view('users.admin.index');
     });
 
-    Route::get('/data_user', function () {
-        return view('users.admin.form');
-    });
-
+    Route::put('/data_user/{id}', [AuthenticatedSessionController::class, 'update'])->name('admin.update');
+    Route::get('/data_user', [AuthenticatedSessionController::class, 'index']);
 });
 
 

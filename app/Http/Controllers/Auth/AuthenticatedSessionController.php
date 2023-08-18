@@ -9,9 +9,17 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use App\Models\User;
 
 class AuthenticatedSessionController extends Controller
 {
+    public function index()
+    {
+        $nomor = 1;
+        $user = User::all();
+        return view('users.admin.form',compact('nomor','user'));
+    }
+
     /**
      * Display the login view.
      */
@@ -54,4 +62,15 @@ class AuthenticatedSessionController extends Controller
 
         return redirect('/');
     }
+
+    public function update(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        if ($user->status_verifikasi === 'Menunggu') {
+            $user->status_verifikasi = $request->status;
+            $user->save();
+        }
+    
+        return redirect('/data_user')->with('success', 'Status verifikasi berhasil diperbarui.');
+        }
 }
