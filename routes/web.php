@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Siswa\DaftarUlangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,24 +30,6 @@ Route::get('/', function () {
 
 
 
-// ROUTE SISWA
-Route::middleware(['auth','level:siswa'])->group(function(){
-    Route::get('/user', function () {
-        return view('users.siswa.index');
-    })->middleware('auth');
-
-    Route::get('/pengumuman', function () {
-        return view('users.siswa.pengumuman');
-    })->middleware('auth');
-
-});
-
-
-
-
-
-
-
 // ROUTE ADMIN
 Route::middleware(['auth', 'level:Administrator'])->group(function () {
     Route::get('/admin', function () {
@@ -57,6 +40,27 @@ Route::middleware(['auth', 'level:Administrator'])->group(function () {
     Route::get('/data_user', [AuthenticatedSessionController::class, 'index']);
 });
 
+
+
+
+
+
+
+
+// ROUTE SISWA
+Route::middleware(['auth','level:siswa'])->group(function(){
+    Route::get('/user', function () {
+        return view('users.siswa.index');
+    })->middleware('auth');
+
+    Route::get('/pengumuman', function () {
+        return view('users.siswa.pengumuman');
+    })->middleware('auth');
+
+    Route::get('/daftar_ulang', [DaftarUlangController::class, 'index']);
+    Route::get('/submit/daftar_ulang', [DaftarUlangController::class, 'DaftarUlang'])->name('submit.daftar_ulang');
+
+});
 
 
 

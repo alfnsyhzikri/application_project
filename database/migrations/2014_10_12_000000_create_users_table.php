@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('level')->default('siswa');
             $table->enum('status_verifikasi', ['Lulus', 'Tidak Lulus', 'Menunggu'])->default('Menunggu');
+            $table->enum('daftar_ulang', ['sudah', 'belum'])->default('belum');
             $table->string('nik')->unique();
             $table->string('nisn')->unique();
             $table->string('nm_siswa');

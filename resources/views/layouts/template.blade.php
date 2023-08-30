@@ -57,7 +57,7 @@
                         <img src="imgs/user8-128x128.jpg" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">
+                        <a href="/user" class="d-block">
                             {{ Auth::user()->nm_siswa }}
                         </a>
                     </div>

@@ -13,6 +13,17 @@
       </a>
     </li>
 
+    @if(Auth::user()->status_verifikasi == "Lulus" && Auth::user()->daftar_ulang == "belum")
+        <li class="nav-item">
+            <a href="/daftar_ulang" class="nav-link">
+                <i class="nav-icon fas fa-id-card"></i>
+                <p>
+                    Daftar Ulang
+                </p>
+            </a>
+        </li>
+    @endif
+
 @stop
 
 
