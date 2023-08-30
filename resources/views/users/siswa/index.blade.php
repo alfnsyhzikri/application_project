@@ -1,4 +1,4 @@
-@extends('layouts.template')
+@extends('layouts.template.siswa')
 @section('Judul','Selamat Datang Calon Siswa')
 
 @section('Menu')
