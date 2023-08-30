@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>@yield('judul')</title>
+  <title>Pengumuman</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -24,22 +24,13 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="/" class="nav-link">Home</a>
+        <a href="/" class="nav-link"><strong>SMAN 12 BANDA ACEH</strong></a>
       </li>
       
     </ul>
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-
-    {{-- <div class="nav-link">{{ Auth::user()->level }}</div> --}}
-    <div class="nav-link">
-      {{ Auth::user()->level }}
-    </div>
-
-    <div class="nav-link">
-      {{ Auth::user()->nm_siswa }}    
-    </div>
 
   <li class="nav-item d-none d-sm-inline-block">
     <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();
@@ -56,12 +47,6 @@
 
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="../../index3.html" class="brand-link">
-      <img src="imgs/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
-    </a>
-
     <!-- Sidebar -->
     <div class="sidebar">
       <!-- Sidebar user (optional) -->
@@ -70,21 +55,11 @@
           <img src="imgs/user8-128x128.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">
+            {{ Auth::user()->nm_siswa }}
+          </a>
         </div>
       </div>
-
-      <!-- SidebarSearch Form -->
-      {{-- <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div> --}}
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -108,12 +83,62 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-
-    @yield('content-header') 
+    <section class="content-header">
+    </section>
 
     <!-- Main content -->
-   
-    @yield('content')
+    <section class="content">
+      <div class="container-fluid">
+
+        <!-- Timelime example  -->
+        <div class="row">
+          <div class="col-md-12">
+            <!-- The time line -->
+            <div class="timeline">
+              <!-- timeline time label -->
+              <div class="time-label">
+                <span class="bg-green">01 Sep 2023</span>
+              </div>
+              <!-- /.timeline-label -->
+              <!-- timeline item -->
+              <div>
+                <i class="fas fa-bullhorn bg-blue"></i>
+                <div class="timeline-item">
+                  <span class="time"><i class="fas fa-clock"></i> 12:05</span>
+                  <h3 class="timeline-header"> <!--<a href="#">Support Team</a> -->
+                    <strong>PENGUMUMAN</strong>
+                  </h3>
+
+                  <div class="timeline-body">
+
+                    @if (auth()->user()->status_verifikasi === 'Lulus')
+                        <div class="alert alert-success">
+                            <strong>Selamat!</strong> Anda dinyatakan LULUS.
+                        </div>
+                    @elseif (auth()->user()->status_verifikasi === 'Tidak Lulus')
+                        <div class="alert alert-danger">
+                          Mohon Maaf!</strong> Anda dinyatakan tidak lulus seleksi pendaftaran. <br>
+                          TETAP SEMANGAT DAN JANGAN PUTUS ASA
+                        </div>
+                    @else ()
+                        <div class="alert alert-warning">
+                          Hasil seleksi pendaftaran akan di tampilkan disini, harap menunggu . . .
+                        </div>
+                    @endif
+
+                  </div>
+                </div>
+              </div>
+              <!-- END timeline item -->
+
+            </div>
+          </div>
+          <!-- /.col -->
+        </div>
+      </div>
+      <!-- /.timeline -->
+
+    </section>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
@@ -121,9 +146,6 @@
  
 
   <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
-    <!-- Control sidebar content goes here -->
-  </aside>
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->

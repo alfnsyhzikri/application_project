@@ -76,5 +76,36 @@ class DatabaseSeeder extends Seeder
             // 'email' => $request->email,
             'password' => 12345678,
         ]);
+
+        User::create([
+            'level' => 'Siswa',
+            'nik' => '3',
+            'nisn' => '3',
+            'nm_siswa' => 'Dai',
+            'tempat_lahir' => 'Banda Aceh',
+            'provinsi' => 'Provinsi Aceh',
+            'kabupaten' => 'Kota Banda Aceh',
+            'kecamatan' => 'Ulee Kareng',
+            'desa' => 'Doi',
+            'tgl_lahir' => '2003-01-01',
+            'umur' => '20 Tahun',
+            'smp' => 'SMP',
+            'foto' => 'FOTO',
+            'jk' => 'Laki - laki',
+            'bb' => 60,
+            'tb' => 180,
+            'sk' => 3,
+            'anak_ke' => 2,
+            'agama' => 'Islam',
+            'status' => '-',
+            'tinggal_bersama' => 'Orang Tua',
+            'nmayah' => 'APA',
+            'kerja_ayah' => '--',
+            'pddkn_ayah' => '--',
+            'no_ayah' => '--',
+            'alamat_ayah' => '--',
+            // 'email' => $request->email,
+            'password' => 12345678,
+        ]);
     }
 }
