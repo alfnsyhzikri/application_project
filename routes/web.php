@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\Admin\SoalController;
 use App\Http\Controllers\Siswa\DaftarUlangController;
 
 /*
@@ -32,12 +33,19 @@ Route::get('/', function () {
 
 // ROUTE ADMIN
 Route::middleware(['auth', 'level:Administrator'])->group(function () {
+
+    // Index Admin
     Route::get('/admin', function () {
         return view('users.admin.index');
     });
 
+    // Menampilkan dan Verifikasi Data User 
     Route::put('/data_user/{id}', [AuthenticatedSessionController::class, 'update'])->name('admin.update');
     Route::get('/data_user', [AuthenticatedSessionController::class, 'index']);
+
+    // Upload Soal
+    Route::get('/soal', [SoalController::class, 'index']);
+    Route::post('/soal/upload', [SoalController::class, 'upload'])->name('soal.upload');
 });
 
 
@@ -49,14 +57,18 @@ Route::middleware(['auth', 'level:Administrator'])->group(function () {
 
 // ROUTE SISWA
 Route::middleware(['auth','level:siswa'])->group(function(){
+    
+    // Index Siswa
     Route::get('/user', function () {
         return view('users.siswa.index');
     })->middleware('auth');
 
+    // Pengumuman
     Route::get('/pengumuman', function () {
         return view('users.siswa.pengumuman');
     })->middleware('auth');
 
+    // Daftar Ulang
     Route::get('/daftar_ulang', [DaftarUlangController::class, 'index']);
     Route::get('/submit/daftar_ulang', [DaftarUlangController::class, 'DaftarUlang'])->name('submit.daftar_ulang');
 

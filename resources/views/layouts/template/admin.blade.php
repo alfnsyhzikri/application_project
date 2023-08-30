@@ -77,6 +77,15 @@
                             </a>
                         </li>
 
+                        <li class="nav-item">
+                            <a href="/soal" class="nav-link">
+                              <i class="nav-icon fas fa-cloud-upload-alt"></i>
+                              <p>
+                                Upload Soal
+                              </p>
+                            </a>
+                        </li>
+
                     </ul>
                 </nav>
             </div>
