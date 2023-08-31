@@ -6,6 +6,7 @@ use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\SoalController;
 use App\Http\Controllers\Siswa\DaftarUlangController;
+use App\Http\Controllers\Siswa\TesMinatBakatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,6 +72,11 @@ Route::middleware(['auth','level:siswa'])->group(function(){
     // Daftar Ulang
     Route::get('/daftar_ulang', [DaftarUlangController::class, 'index']);
     Route::get('/submit/daftar_ulang', [DaftarUlangController::class, 'DaftarUlang'])->name('submit.daftar_ulang');
+
+    // Tes Minat Bakat
+    Route::get('/minat_bakat', [TesMinatBakatController::class, 'index'])->name('index.tes');
+    Route::get('/tes_minat_bakat', [TesMinatBakatController::class, 'TesMinatBakat']);
+    Route::post('/tes/submit', [TesMinatBakatController::class, 'submitTes'])->name('tes.submit');
 
 });
 

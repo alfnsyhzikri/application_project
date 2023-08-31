@@ -22,6 +22,16 @@
                 </p>
             </a>
         </li>
+
+    @elseif(Auth::user()->status_verifikasi == "Lulus" && Auth::user()->daftar_ulang == "sudah")
+        <li class="nav-item">
+            <a href="/minat_bakat" class="nav-link">
+                <i class="nav-icon fas fa-id-card"></i>
+                <p>
+                    Tes Minat Bakat
+                </p>
+            </a>
+        </li>
     @endif
 
 @stop

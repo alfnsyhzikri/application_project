@@ -66,4 +66,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function kelasIpa()
+    {
+        return $this->hasOne(KelasIpa::class);
+    }
+    
+    public function kelasIps()
+    {
+        return $this->hasOne(KelasIps::class);
+    }
 }
